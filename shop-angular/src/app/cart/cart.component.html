@@ -1,0 +1,27 @@
+<mat-card *ngIf="empty">
+    <mat-card-header>
+        <mat-card-title>No items in cart
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-actions>
+        <button mat-raised-button type="button" (click)="router.navigate(['/home'])">Add something</button>
+    </mat-card-actions>
+</mat-card>
+
+<mat-card *ngFor="let item of itemList">
+    <mat-card-header>
+        <mat-card-title>{{item.name}}: {{ item.price}}$
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        {{item.desc?.substr(0,100) + '...'}}
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <button mat-icon-button type="button" (click)="removeItem(item)">
+            <mat-icon>remove_shopping_cart</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>
+<div class="center" *ngIf="!empty">
+    <button mat-raised-button color="primary" (click)="buy()">BUY</button>
+</div>
