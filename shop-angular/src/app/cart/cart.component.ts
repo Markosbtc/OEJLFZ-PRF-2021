@@ -49,9 +49,10 @@ export class CartComponent implements OnInit {
 
   buy() {
     let idstring = this.itemList[0].id;
-    let sum = 0;
-
+    let sum = this.itemList[0].price;
+    
     if (this.itemList.length > 1) {
+      sum = 0;
       this.itemList.forEach(item => {
         idstring += item.id + ', ';
         sum += item.price;
